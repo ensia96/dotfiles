@@ -1,0 +1,5 @@
+[credential]
+	helper = osxkeychain
+[user]
+	name = 춤추는망고
+	email = ensia96@gmail.com
