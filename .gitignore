@@ -6,6 +6,7 @@
 !.config/com.googlecode.iterm2.plist
 !.gitconfig
 !.gitignore
+!.p10k.zsh
 !.resources
 !.resources/GruvboxDark.itermcolors
 !.zshrc
