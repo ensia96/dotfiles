@@ -3,6 +3,7 @@
 !.config/nvim
 !.config/nvim/coc-settings.json
 !.config/nvim/init.vim
+!.config/com.googlecode.iterm2.plist
 !.gitconfig
 !.gitignore
 !.resources
