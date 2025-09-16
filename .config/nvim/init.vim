@@ -266,6 +266,7 @@ inoremap kj <ESC>
 map <CR> :w<cr>
 map <A-CR> :wq<cr>
 map <A-w> :q<cr>
+map <A-q> :q!<cr>
 map <A-T> :term<cr>
 map <A-d> :wincmd v<cr>
 map <A-S-d> :wincmd s<cr>
@@ -281,14 +282,14 @@ map <A-[> <<
 " ------------------------------------
 " Alt + a => 정의로 이동
 " Alt + e => 리팩토링 액션
-" Alt + q => 코드 수정 액션
+" Alt + z => 코드 수정 액션
 " Alt + s => 오류 탐색
 " Alt + v => 변수 이름 변경
 " K       => 설명 표시
 " ------------------------------------
 nmap <silent> <A-a> <Plug>(coc-definition)
 nmap <silent> <A-e> <Plug>(coc-codeaction-refactor)
-nmap <silent> <A-q> <Plug>(coc-codeaction-source)
+nmap <silent> <A-z> <Plug>(coc-codeaction-source)
 nmap <silent> <A-s> <Plug>(coc-diagnostic-next)
 nmap <A-v> <Plug>(coc-rename)
 function! ShowDocumentation()
