@@ -241,8 +241,6 @@ let g:copilot_no_tab_map = v:true
 " ------------------------------------
 " 기본
 " ------------------------------------
-" jk              => ESC
-" kj              => ESC
 " Enter           => 저장
 " Alt + Enter     => 저장하고 종료
 " Alt + w         => 현재 버퍼 닫기
@@ -261,8 +259,6 @@ let g:copilot_no_tab_map = v:true
 " Ctrl + k        => 위 버퍼로 이동
 " Ctrl + l        => 오른쪽 버퍼로 이동
 " ------------------------------------
-inoremap jk <ESC>
-inoremap kj <ESC>
 map <CR> :w<cr>
 map <A-CR> :wq<cr>
 map <A-w> :q<cr>
