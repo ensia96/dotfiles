@@ -245,7 +245,6 @@ let g:copilot_no_tab_map = v:true
 " Alt + Enter     => 저장하고 종료
 " Alt + w         => 현재 버퍼 닫기
 " Alt + q         => 현재 버퍼 강제 닫기
-" Alt + Shift + t => 현재 버퍼에 터미널 열기
 " Alt + d         => 버퍼 나누기 (왼쪽/오른쪽)
 " Alt + Shift + d => 버퍼 나누기 (위/아래)
 " Alt + h         => 버퍼 이동 (왼쪽)
@@ -258,12 +257,12 @@ let g:copilot_no_tab_map = v:true
 " Ctrl + j        => 아래 버퍼로 이동
 " Ctrl + k        => 위 버퍼로 이동
 " Ctrl + l        => 오른쪽 버퍼로 이동
+" Ctrl + t        => 현재 버퍼에 터미널 열기
 " ------------------------------------
 map <CR> :w<cr>
 map <A-CR> :wq<cr>
 map <A-w> :q<cr>
 map <A-q> :q!<cr>
-map <A-T> :term<cr>
 map <A-d> :wincmd v<cr>
 map <A-S-d> :wincmd s<cr>
 map <A-h> :wincmd H<cr>
@@ -272,6 +271,7 @@ map <A-k> :wincmd K<cr>
 map <A-l> :wincmd L<cr>
 map <A-]> >>
 map <A-[> <<
+map <C-T> :term<cr>
 
 " ------------------------------------
 " 자동완성
