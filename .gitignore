@@ -10,3 +10,7 @@
 !.resources
 !.resources/GruvboxDark.itermcolors
 !.zshrc
+!.env.example
+!.config/opencode
+!.config/opencode/skill
+!.config/opencode/skill/**
