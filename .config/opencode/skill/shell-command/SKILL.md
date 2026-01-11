@@ -5,6 +5,27 @@ description: "쉘 명령어 실행 범위 및 기록 규칙"
 
 # Shell Command
 
+## 핵심 철학
+
+> **"Git 커밋으로 추적되지 않는 모든 행동은 기록되어야 한다."**
+
+매뉴얼 동작이 발생하면, 그것이 예외 상황(코딩 실수, 긴급 수정 등)의 결과이건 계획된 작업이건, **근거 없고 이력 없는 행동이 되지 않도록** 기록한다.
+
+---
+
+## 위험 등급 기준
+
+에이전트 자가 판단을 위한 기준:
+
+| 등급 | 설명 | 예시 | 필요 조치 |
+|------|------|------|----------|
+| **읽기** | 상태 조회만 | `kubectl get`, `terraform state list`, `helm status` | 자동 실행 가능 |
+| **쓰기** | 리소스 생성/수정 | `kubectl apply`, `helm install`, `terraform apply` | 사용자 승인 후 실행 |
+| **삭제** | 리소스 제거 | `kubectl delete`, `helm uninstall`, `terraform destroy` | 사용자 승인 + 롤백 계획 |
+| **프로덕션** | 운영 환경 영향 | prod 네임스페이스, 실서비스 | 사용자 승인 + 영향 범위 고지 |
+
+---
+
 ## 실행 범위 확인 (BLOCKING)
 
 **작업 시작 시 사용자에게 실행 가능 범위를 검토받는다.**
@@ -16,13 +37,13 @@ description: "쉘 명령어 실행 범위 및 기록 규칙"
 
 이 작업에서 다음 명령어들을 사용할 수 있습니다:
 
-| 도구 | 예상 사용 | 위험도 |
-|------|----------|--------|
-| kubectl | get, describe, logs | 낮음 (읽기) |
-| kubectl | apply, delete | 중간 (쓰기) |
-| helm | list, status | 낮음 (읽기) |
-| terraform | plan | 낮음 |
-| terraform | apply | 높음 |
+| 도구 | 예상 사용 | 위험 등급 |
+|------|----------|----------|
+| kubectl | get, describe, logs | 읽기 |
+| kubectl | apply, delete | 쓰기/삭제 |
+| helm | list, status | 읽기 |
+| terraform | plan | 읽기 |
+| terraform | apply | 쓰기 |
 
 어디까지 자동 실행해도 될까요?
 ```
@@ -44,11 +65,13 @@ Git 커밋으로 추적되지 않는 모든 쉘 명령어 실행:
 
 | 도구 | 예시 |
 |------|------|
-| **kubectl** | apply, delete, patch, exec |
-| **helm** | install, upgrade, rollback |
-| **terraform** | plan, apply, destroy |
-| **gh** | secret set, issue create |
-| **docker** | run, exec, rm |
+| **kubectl** | apply, delete, patch, exec, rollout |
+| **helm** | install, upgrade, rollback, uninstall |
+| **terraform** | plan, apply, destroy, import |
+| **gh** | secret set, issue create, pr merge |
+| **docker** | run, exec, rm, build |
+
+---
 
 ## 기록 형식
 
@@ -65,6 +88,8 @@ GitHub 이슈/PR에 댓글로 기록:
 - 결과: {성공/실패, 영향}
 ```
 
+---
+
 ## 기록 위치
 
 | 상황 | 기록 위치 |
@@ -72,6 +97,8 @@ GitHub 이슈/PR에 댓글로 기록:
 | 이슈 작업 중 | 이슈 댓글 |
 | PR 작업 중 | PR 댓글 |
 | 긴급 조치 | 관련 이슈 또는 새 이슈 생성 |
+
+---
 
 ## 기존 시스템 활용 확인
 
@@ -85,6 +112,8 @@ GitHub 이슈/PR에 댓글로 기록:
 
 **파이프라인 활용 가능하면 수동 실행 대신 파이프라인 사용 권장**
 
+---
+
 ## 민감 정보 보호
 
 ```bash
@@ -94,6 +123,8 @@ gh secret set API_KEY --body "sk-1234567890abcdef"
 # Good - 값 마스킹 또는 생략
 gh secret set API_KEY
 ```
+
+---
 
 ## 예시
 
