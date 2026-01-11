@@ -84,9 +84,8 @@ websocket        # websockets
 
 ## 정렬 규칙
 
-- JSON 키: 오름차순 (alphabetical)
-- 환경변수: 오름차순
-- import/export: 오름차순
+- **기본 원칙**: 나열되는 코드(속성, 변수, 키, 목록 등)는 오름차순
+- **도구 설정 우선**: coc, prettier 등 자동화 도구 설정이 있으면 도구 따름
 - 일관성 있는 정렬로 diff 최소화
 
 ## 코드 포매팅
