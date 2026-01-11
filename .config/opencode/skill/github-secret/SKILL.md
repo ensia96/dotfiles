@@ -68,7 +68,7 @@ gh secret delete {NAME}
 Secret 작업은 이슈/PR에 기록:
 
 ```markdown
-## Secret 작업 기록 - YYMMDD HH:MM
+## Secret 작업 기록 - YYYY-MM-DD HH:MM
 
 ### {작업 내용}
 ```bash

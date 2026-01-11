@@ -55,7 +55,7 @@ Git 커밋으로 추적되지 않는 모든 쉘 명령어 실행:
 GitHub 이슈/PR에 댓글로 기록:
 
 ```markdown
-## 쉘 명령어 실행 기록 - YYMMDD HH:MM
+## 쉘 명령어 실행 기록 - YYYY-MM-DD HH:MM
 
 ### {작업 제목}
 ```bash
@@ -98,7 +98,7 @@ gh secret set API_KEY
 ## 예시
 
 ```markdown
-## 쉘 명령어 실행 기록 - 260110 14:30
+## 쉘 명령어 실행 기록 - 2026-01-10 14:30
 
 ### Service Resync 트리거
 ```bash
