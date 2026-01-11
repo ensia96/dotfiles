@@ -7,7 +7,7 @@ description: "GitHub Pull Request 생성 규칙"
 
 ## 형식
 
-### For develop (작업 PR)
+### For dev (작업 PR)
 ```
 [#{issue number}] {worker} ({YYYY-MM-DD})
 ```

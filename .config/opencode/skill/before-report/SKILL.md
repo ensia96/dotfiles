@@ -76,12 +76,12 @@ description: "보고 전 작업 정리 및 학습 자료 준비"
 - 변경 파일/리소스 목록
 
 ### 규칙 준수 체크리스트
-- [ ] 브랜치명: `{issue}/{worker}/{YYYY-MM-DD}` 형식 준수
-- [ ] PR 제목: `[#{이슈}] {작업자} ({날짜})` 형식 준수
-- [ ] 이슈 연결: `Closes #` 또는 `gh issue develop` 사용
-- [ ] Merge 방식: 일반 merge (squash 아님)
-- [ ] 네이밍 규칙: naming 스킬 준수
-- [ ] 수동 작업: 이슈에 기록 완료
+- [ ] 브랜치명: `git-branch` 스킬 규칙 준수
+- [ ] PR 제목: `github-pull-request` 스킬 규칙 준수
+- [ ] 이슈 연결: `github-pull-request` 스킬 규칙 준수
+- [ ] Merge 방식: `github-merge` 스킬 규칙 준수
+- [ ] 네이밍 규칙: `naming-*` 스킬 준수
+- [ ] 수동 작업: `shell-command` 스킬 규칙 준수
 
 ### 위반사항 (있는 경우)
 | 위반 | 시정 상태 |
