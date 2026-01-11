@@ -3,7 +3,7 @@
   "google_auth": false,
   "agents": {
     "Sisyphus": {
-      "prompt_append": "[SKILL POLICY]\n\n모든 작업의 첫 단계: skill 도구로 스킬 확인 → 매칭 스킬 로드 및 적용.\n\n서브에이전트 위임 시 REQUIRED SKILLS에 스킬명 명시하여 전파.\n\n## Gate 스킬 (BLOCKING)\n\n| 트리거 | 스킬 | 필수 조치 |\n|--------|------|----------|\n| 쉘 명령어 실행 전 | shell-command | 실행 범위 확인 먼저 |\n| 변경/수정 작업 전 | before-action | 사실/의견 검증 |\n\nGate 스킬 미로드 시 작업 진행 금지."
+      "prompt_append": "[SKILL POLICY]\n\n모든 작업의 첫 단계: skill 도구로 스킬 확인 → 매칭 스킬 로드 및 적용.\n\n서브에이전트 위임 시 REQUIRED SKILLS에 스킬명 명시하여 전파.\n\n## 스킬 분류 (마커 기반)\n\n| 마커 | 의미 | 동작 |\n|------|------|------|\n| ⚠️ **GATE SKILL** | 강제 적용 | 트리거 해당 시 반드시 로드 |\n| 💡 **OPTIONAL SKILL** | 선택적 적용 | 트리거 해당 시 적용 여부 판단 필수 |\n| (마커 없음) | 컨텍스트 스킬 | 해당 상황에서 로드 |\n\n## Gate 스킬 (BLOCKING)\n\n스킬 내용에 \"⚠️ **GATE SKILL**\" 표시가 있으면 Gate 스킬.\n해당 스킬의 트리거 조건(스킬 내부에 명시됨)에 해당 시 강제 로드.\n\nGate 스킬 미로드 시 작업 진행 금지.\n\n## Optional 스킬\n\n스킬 내용에 \"💡 **OPTIONAL SKILL**\" 표시가 있으면 Optional 스킬.\n트리거 해당 시 적용 여부 판단 필수 (무시 금지).\n판단하지 말고 기록하라 - 사용자 지식 레벨 추측 금지."
     },
     "librarian": {
       "model": "opencode/glm-4.7-free"
