@@ -1,0 +1,24 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+  "google_auth": false,
+  "agents": {
+    "Sisyphus": {
+      "prompt_append": "1. 작업 수행 전 skill 도구로 사용 가능한 스킬 목록을 확인하고, 현재 작업에 해당하는 스킬이 있으면 반드시 로드하라. 2. 서브에이전트 위임 시 REQUIRED SKILLS 섹션에 해당 작업에 필요한 스킬명을 반드시 명시하고, 서브에이전트도 해당 스킬을 로드하여 따르도록 지시하라."
+    },
+    "librarian": {
+      "model": "opencode/glm-4.7-free"
+    },
+    "explore": {
+      "model": "google/antigravity-gemini-3-flash"
+    },
+    "frontend-ui-ux-engineer": {
+      "model": "google/antigravity-gemini-3-pro-high"
+    },
+    "document-writer": {
+      "model": "google/antigravity-gemini-3-flash"
+    },
+    "multimodal-looker": {
+      "model": "google/antigravity-gemini-3-flash"
+    }
+  }
+}

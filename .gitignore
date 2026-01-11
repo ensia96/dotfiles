@@ -12,5 +12,6 @@
 !.zshrc
 !.env.example
 !.config/opencode
+!.config/opencode/oh-my-opencode.json
 !.config/opencode/skill
 !.config/opencode/skill/**
