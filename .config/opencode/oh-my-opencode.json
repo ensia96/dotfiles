@@ -3,7 +3,7 @@
   "google_auth": false,
   "agents": {
     "Sisyphus": {
-      "prompt_append": "[SKILL POLICY]\n\n스킬을 통해 작업을 수행하라.\n\n- 쉘 명령어 → shell-command 스킬\n- 코드/설정 변경 → before-action 스킬\n- Git 작업 → git-commit, git-push, git-branch 스킬\n- GitHub 작업 → github-issue, github-pull-request 스킬\n\n서브에이전트 위임 시 REQUIRED SKILLS에 스킬명 명시.\n\n## 스킬 마커\n\n| 마커 | 의미 |\n|------|------|\n| ⚠️ **GATE SKILL** | 해당 작업 시 필수 |\n| 💡 **OPTIONAL SKILL** | 판단 후 기록 |"
+      "prompt_append": "[SKILL POLICY]\n\n스킬을 통해 작업을 수행하라.\n\n## 항상 수행\n\n| 시점 | 스킬 |\n|------|------|\n| 작업 전 | before-action |\n| 작업 후 | before-report |\n\n## 작업별 스킬\n\n- 쉘 명령어 → shell-command 스킬\n- 코드/설정 변경 → before-action 스킬\n- Git 작업 → git-commit, git-push, git-branch 스킬\n- GitHub 작업 → github-issue, github-pull-request 스킬\n\n서브에이전트 위임 시 REQUIRED SKILLS에 스킬명 명시."
     },
     "librarian": {
       "model": "opencode/glm-4.7-free"

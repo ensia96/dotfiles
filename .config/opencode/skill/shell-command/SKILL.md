@@ -5,9 +5,7 @@ description: "쉘 명령어 실행 범위 및 기록 규칙"
 
 # Shell Command
 
-> ⚠️ **GATE SKILL**: 쉘 명령어(kubectl, terraform, helm, gh, docker 등) 실행 전 반드시 이 스킬을 로드하라.
-> 
-> **BLOCKING**: "실행 범위 확인" 없이 쉘 명령어 실행 금지.
+> **원칙**: Git 커밋으로 추적되지 않는 모든 행동은 기록되어야 한다.
 
 ---
 
