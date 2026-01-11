@@ -3,7 +3,7 @@
   "google_auth": false,
   "agents": {
     "Sisyphus": {
-      "prompt_append": "[SKILL POLICY]\n\n모든 작업의 첫 단계: skill 도구로 스킬 확인 → 매칭 스킬 로드 및 적용.\n\n서브에이전트 위임 시 REQUIRED SKILLS에 스킬명 명시하여 전파."
+      "prompt_append": "[SKILL POLICY]\n\n모든 작업의 첫 단계: skill 도구로 스킬 확인 → 매칭 스킬 로드 및 적용.\n\n서브에이전트 위임 시 REQUIRED SKILLS에 스킬명 명시하여 전파.\n\n## Gate 스킬 (BLOCKING)\n\n| 트리거 | 스킬 | 필수 조치 |\n|--------|------|----------|\n| 쉘 명령어 실행 전 | shell-command | 실행 범위 확인 먼저 |\n| 변경/수정 작업 전 | before-action | 사실/의견 검증 |\n\nGate 스킬 미로드 시 작업 진행 금지."
     },
     "librarian": {
       "model": "opencode/glm-4.7-free"
