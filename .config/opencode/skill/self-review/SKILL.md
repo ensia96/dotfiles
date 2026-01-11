@@ -63,13 +63,16 @@ description: "작업 중 자가 검토 체크리스트"
 
 ### Git/GitHub 작업
 
-```
-[ ] 브랜치명: `{issue}/{worker}/{YYYY-MM-DD}` 형식
-[ ] 커밋 메시지: `{type}: {한글 메시지}` 형식
-[ ] PR 제목: `[#{이슈}] {작업자} ({날짜})` 형식
-[ ] 이슈 연결: `Closes #` 또는 `gh issue develop`
-[ ] 매뉴얼 조작 기록 (해당 시)
-```
+각 시점에 해당 스킬 참조:
+
+| 시점 | 참조 스킬 |
+|------|----------|
+| 브랜치 생성 | `git-branch` |
+| 커밋 | `git-commit` |
+| 푸시 | `git-push` |
+| PR 생성 | `github-pull-request` |
+| 머지 | `github-merge` |
+| 매뉴얼 조작 | `shell-command` |
 
 ---
 
