@@ -64,6 +64,7 @@
 | 커밋 메시지 형식 불일치 | `{type}: {한글 메시지}` 필수 |
 | 브랜치 이름 형식 불일치 | `{issue}/{worker}/{YYYY-MM-DD}` 필수 |
 | PR 제목 형식 불일치 | `[#{issue}] {worker} ({YYYY-MM-DD})` 필수 |
+| Issue 제목 형식 불일치 | `{type}: {제목}` 필수 (type: story/report/voc/task) |
 
 ### 확인 필요 (ask)
 
@@ -105,7 +106,7 @@ Reality -> Issue -> Branch -> Commit -> PR -> dev -> main -> Reality
 ### Issue
 
 - **제목**: `{type}: {제목}`
-- **type**: story / report / voc / task / bug
+- **type**: story / report / voc / task
 - **본문**: 배경/목적, 완료 조건
 
 ```markdown
