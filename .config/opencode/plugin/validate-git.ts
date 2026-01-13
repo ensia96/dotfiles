@@ -79,6 +79,20 @@ const rules = {
       );
     }
   },
+
+  issueTitleFormat: (cmd: string): void => {
+    if (!/gh issue create/.test(cmd)) return;
+
+    const titleMatch = cmd.match(/--title[= ]+["'](.+?)["']/);
+    if (!titleMatch) return;
+
+    const title = titleMatch[1];
+    if (!/^(story|report|voc|task): .+/.test(title)) {
+      throw new Error(
+        `❌ Issue 제목 형식 오류.\n   형식: {type}: {제목}\n   type: story, report, voc, task\n   현재: "${title}"`,
+      );
+    }
+  },
 };
 
 const validateCommand = (cmd: string): void => {
@@ -87,6 +101,7 @@ const validateCommand = (cmd: string): void => {
   rules.commitMessageFormat(cmd);
   rules.branchNameFormat(cmd);
   rules.prTitleFormat(cmd);
+  rules.issueTitleFormat(cmd);
 };
 
 export const ValidateGit: Plugin = async (_ctx) => {
