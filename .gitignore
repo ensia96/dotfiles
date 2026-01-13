@@ -5,7 +5,7 @@
 !.config/nvim/init.vim
 !.config/com.googlecode.iterm2.plist
 !.gitconfig
-!.gitignore
+!/.gitignore
 !.p10k.zsh
 !.resources
 !.resources/GruvboxDark.itermcolors
