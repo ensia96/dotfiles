@@ -4,6 +4,22 @@
 
 ---
 
+## Design Philosophy
+
+**핵심 원칙**: 구조로 강제하되, 사용자 판단 영역은 존중
+
+| 레이어 | 역할 | 철학적 근거 |
+|--------|------|-------------|
+| **Plugin Hook** | 에이전트 실수 방지 (형식, 워크플로우) | "인지만으로는 예방되지 않는다" |
+| **ASK** | 사용자에게 최종 판단권 위임 | "User = boundary manager" |
+
+**실용적 가치 우선**:
+- 이론적 취약점보다 **현실적 발생 경로**에 집중
+- 과도한 방어보다 **철학/정책 정렬**로 해결
+- 예: 브랜치 재사용 정책 → `-B` 우회 자연 방지
+
+---
+
 ## Scope
 
 **Agent utilization only**
@@ -61,7 +77,9 @@ Reality -> Issue -> Branch -> Commit -> PR -> dev -> main -> Reality
 
 - **형식**: `{issue}/{worker}/{YYYY-MM-DD}`
 - **생성**: `gh issue develop {issue} --checkout --name "{형식}"` (이슈 자동 연결)
+- **재사용**: 같은 이슈/작업자/날짜면 기존 브랜치 재사용 (새로 생성 금지)
 - **hotfix**: `hotfix/{worker}/{YYYY-MM-DD}`
+- **미지원**: `git worktree` (병렬 작업은 이 워크플로우에서 지원하지 않음)
 
 ### Commit
 
