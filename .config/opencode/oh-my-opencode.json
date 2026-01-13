@@ -3,22 +3,64 @@
   "google_auth": false,
   "agents": {
     "Sisyphus": {
-      "prompt_append": "[SKILL POLICY]\n\n스킬을 통해 작업을 수행하라.\n\n## 항상 수행\n\n| 시점 | 스킬 |\n|------|------|\n| 작업 전 | before-action |\n| 작업 후 | before-report |\n\n## 작업별 스킬\n\n- 쉘 명령어 → shell-command 스킬\n- 코드/설정 변경 → before-action 스킬\n- Git 작업 → git-commit, git-push, git-branch 스킬\n- GitHub 작업 → github-issue, github-pull-request 스킬\n\n서브에이전트 위임 시 REQUIRED SKILLS에 스킬명 명시."
+      "permission": {
+        "bash": {
+          "*": "ask",
+          "git status": "allow",
+          "git diff*": "allow",
+          "git log*": "allow",
+          "git show*": "allow",
+          "git branch": "allow",
+          "git remote -v": "allow",
+          "ls*": "allow",
+          "pwd": "allow",
+          "which*": "allow",
+          "whoami": "allow"
+        }
+      }
     },
     "librarian": {
-      "model": "opencode/glm-4.7-free"
+      "model": "opencode/glm-4.7-free",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny"
+      }
     },
     "explore": {
-      "model": "google/antigravity-gemini-3-flash"
+      "model": "google/antigravity-gemini-3-flash",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny"
+      }
     },
     "frontend-ui-ux-engineer": {
-      "model": "google/antigravity-gemini-3-pro-high"
+      "model": "google/antigravity-gemini-3-pro-high",
+      "permission": {
+        "bash": "ask",
+        "edit": {
+          "*": "allow",
+          ".git/**": "deny",
+          ".github/**": "deny"
+        }
+      }
     },
     "document-writer": {
-      "model": "google/antigravity-gemini-3-flash"
+      "model": "google/antigravity-gemini-3-flash",
+      "permission": {
+        "bash": "ask",
+        "edit": {
+          "*": "allow",
+          ".git/**": "deny",
+          ".github/**": "deny"
+        }
+      }
     },
     "multimodal-looker": {
-      "model": "google/antigravity-gemini-3-flash"
+      "model": "google/antigravity-gemini-3-flash",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny"
+      }
     }
   }
 }
