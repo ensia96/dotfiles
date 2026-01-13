@@ -99,6 +99,7 @@ Reality -> Issue -> Branch -> Commit -> PR -> dev -> main -> Reality
 - **형식**: `{type}: {한글 메시지}`
 - **type**: feat / fix / docs / chore (저장소 관례 우선)
 - **단위**: atomic (하나의 커밋 = 하나의 독립적 변경)
+- **검증**: 커밋 전 staged 변경 검토, 독립적 변경이 섞여 있으면 분리
 - **자기완결**: 제3자가 메시지만 보고 변경 파악 가능
 
 ### Issue
