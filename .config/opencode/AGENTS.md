@@ -83,8 +83,6 @@
 Reality -> Issue -> Branch -> Commit -> PR -> dev -> main -> Reality
 ```
 
-예외는 **hotfix**뿐.
-
 ---
 
 ## Conventions
@@ -94,7 +92,6 @@ Reality -> Issue -> Branch -> Commit -> PR -> dev -> main -> Reality
 - **형식**: `{issue}/{worker}/{YYYY-MM-DD}`
 - **생성**: `gh issue develop {issue} --checkout --name "{형식}"` (이슈 자동 연결)
 - **재사용**: 같은 이슈/작업자/날짜면 기존 브랜치 재사용 (새로 생성 금지)
-- **hotfix**: `hotfix/{worker}/{YYYY-MM-DD}`
 - **미지원**: `git worktree` (병렬 작업은 이 워크플로우에서 지원하지 않음)
 
 ### Commit
@@ -189,19 +186,6 @@ Closes #{issue}
 ---
 
 ## Exception Policy
-
-### Hotfix 조건
-
-다음 중 하나에 해당할 때만:
-- 서비스 다운/장애
-- 보안 취약점
-- 데이터 손실 위험
-
-### Hotfix 절차
-
-1. main에 직접 커밋/머지
-2. **즉시** dev로 propagation (PR 또는 merge)
-3. 사후 이슈 생성 (기록용)
 
 ### ASK 시 필수 정보
 
