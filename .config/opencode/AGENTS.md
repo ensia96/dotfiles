@@ -206,4 +206,5 @@ Git 커밋으로 추적되지 않는 행동 (kubectl, helm, terraform, gh secret
 
 ## Reference
 
-상세 규칙은 `~/projects/memo/agent-workflow.md` 참조.
+- 상세 규칙: `~/projects/memo/agent-workflow.md`
+- **가치 판단 기준: `~/projects/memo/philosophy.md` (정책 충돌/해석 시 참조)**
