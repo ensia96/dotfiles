@@ -13,5 +13,6 @@
 !.env.example
 !.config/opencode
 !.config/opencode/oh-my-opencode.json
-!.config/opencode/skill
-!.config/opencode/skill/**
+!.config/opencode/AGENTS.md
+!.config/opencode/plugin
+!.config/opencode/plugin/**
