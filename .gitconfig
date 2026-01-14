@@ -3,3 +3,9 @@
 [user]
 	name = 춤추는망고
 	email = ensia96@gmail.com
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
