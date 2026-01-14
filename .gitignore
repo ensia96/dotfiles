@@ -1,13 +1,13 @@
 *
 !.config
+!.config/com.googlecode.iterm2.plist
 !.config/nvim
 !.config/nvim/coc-settings.json
 !.config/nvim/init.vim
-!.config/com.googlecode.iterm2.plist
+!.env.example
 !.gitconfig
-!/.gitignore
 !.p10k.zsh
 !.resources
 !.resources/GruvboxDark.itermcolors
 !.zshrc
-!.env.example
+!/.gitignore
