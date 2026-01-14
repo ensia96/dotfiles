@@ -11,8 +11,3 @@
 !.resources/GruvboxDark.itermcolors
 !.zshrc
 !.env.example
-!.config/opencode
-!.config/opencode/oh-my-opencode.json
-!.config/opencode/AGENTS.md
-!.config/opencode/plugin
-!.config/opencode/plugin/**
