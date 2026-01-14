@@ -6,8 +6,8 @@
 !.config/nvim/init.vim
 !.env.example
 !.gitconfig
+!.gitignore
 !.p10k.zsh
 !.resources
 !.resources/GruvboxDark.itermcolors
 !.zshrc
-!.gitignore
