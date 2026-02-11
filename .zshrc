@@ -6,9 +6,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 plugins=(git)
+alias o="opencode"
 alias pip="pip3"
-alias python="python3"
 alias py="python"
+alias python="python3"
 alias v="nvim"
 
 # export HOMEBREW_PREFIX="/usr/local"  # for intel
