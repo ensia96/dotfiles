@@ -334,6 +334,21 @@ map <A-b> :BCommits<cr>
 map <A-m> :MarkdownPreview<cr>
 map <A-S-m> :MarkdownPreviewStop<cr>
 
+" ------------------------------------
+" 원격 접속 환경 OSC 52 클립보드 설정
+" ------------------------------------
+let g:clipboard = {
+  \   'name': 'OSC 52',
+  \   'copy': {
+  \      '+': {lines, regtype -> chansend(v:stderr, "\x1b]52;c;" . system('base64', join(lines, "\n")) . "\x07")},
+  \      '*': {lines, regtype -> chansend(v:stderr, "\x1b]52;c;" . system('base64', join(lines, "\n")) . "\x07")},
+  \   },
+  \   'paste': {
+  \      '+': {-> split(getreg('"'), "\n", 1)},
+  \      '*': {-> split(getreg('"'), "\n", 1)},
+  \   },
+  \ }
+
 " 자동완성 관련 설정인데 잘 모르겠음
 
 " Use tab for trigger completion with characters ahead and navigate
