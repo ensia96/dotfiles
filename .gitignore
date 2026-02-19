@@ -8,5 +8,6 @@
 !.p10k.zsh
 !.resources
 !.resources/GruvboxDark.itermcolors
+!.tmux.conf
 !.zshrc
 *
