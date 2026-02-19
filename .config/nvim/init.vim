@@ -95,7 +95,6 @@ call plug#end()
 " 검색 시, 결과 강조 설정
 " 검색 시, 대소문자 무시
 " 운영체제 기본 클립보드 연동
-" 복사/붙여넣기를 위해 마우스 모드 수정
 " ? 제목 표시줄에 현재 버퍼의 파일명 표시
 " 긴 줄을 자동 줄바꿈
 " 단어 단위로 줄바꿈 처리
@@ -116,7 +115,6 @@ set fenc=utf-8
 set hlsearch
 set ignorecase
 set clipboard=unnamed
-set mouse=r
 set title
 set wrap
 set linebreak
