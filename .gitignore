@@ -1,3 +1,4 @@
+*
 !.config
 !.config/com.googlecode.iterm2.plist
 !.config/nvim
@@ -10,4 +11,3 @@
 !.resources/GruvboxDark.itermcolors
 !.tmux.conf
 !.zshrc
-*
