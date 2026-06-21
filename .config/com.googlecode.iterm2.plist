@@ -1382,6 +1382,8 @@
 			</array>
 			<key>Keyboard Map</key>
 			<dict/>
+			<key>Left Option Key Changeable</key>
+			<true/>
 			<key>Link Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -1640,7 +1642,7 @@
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Treat Option as Alt</key>
-			<false/>
+			<true/>
 			<key>Unlimited Scrollback</key>
 			<true/>
 			<key>Use Bold Font</key>
