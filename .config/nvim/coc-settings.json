@@ -1,6 +1,6 @@
 {
   "coc.preferences.formatOnSave": true,
   "inlayHint.position": "eol",
-  "snippets.ultisnips.pythonPrompt": false,
+  "snippets.ultisnips.enable": false,
   "python.formatting.autopep8Args": ["--ignore=E731"]
 }
