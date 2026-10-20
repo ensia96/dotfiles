@@ -9,7 +9,6 @@ readonly BREW_BIN="/opt/homebrew/bin/brew"
 readonly GH_BIN="/opt/homebrew/bin/gh"
 readonly TAILSCALE_BIN="/opt/homebrew/bin/tailscale"
 readonly TAILSCALE_SERVICE="system/homebrew.mxcl.tailscale"
-readonly ITERM_PREFERENCES="$HOME/.config/com.googlecode.iterm2.plist"
 readonly NVIM_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/nvim"
 readonly PLUG_VIM="$NVIM_DATA_DIR/site/autoload/plug.vim"
 readonly COPILOT_PLUGIN="$NVIM_DATA_DIR/plugged/copilot.vim/plugin/copilot.vim"
@@ -247,23 +246,6 @@ install_neovim_plugins() {
   nvim --headless '+PlugInstall --sync' +qa
   [[ -s "$COPILOT_PLUGIN" ]] || die "Copilot 플러그인 설치를 확인하지 못했습니다."
 }
-iterm_ready() {
-  local folder load
-  [[ -s "$ITERM_PREFERENCES" ]] || return 1
-  folder="$(/usr/bin/defaults read com.googlecode.iterm2 PrefsCustomFolder 2>/dev/null || true)"
-  load="$(/usr/bin/defaults read com.googlecode.iterm2 LoadPrefsFromCustomFolder 2>/dev/null || true)"
-  [[ "$folder" == "$HOME/.config" && "$load" == "1" ]]
-}
-configure_iterm() {
-  log "iTerm custom preferences"
-  [[ -s "$ITERM_PREFERENCES" ]] || die "$ITERM_PREFERENCES를 찾을 수 없습니다."
-  iterm_ready && return
-  /usr/bin/pgrep -x iTerm2 >/dev/null 2>&1 \
-    && die "iTerm2를 종료한 뒤 다시 실행하세요. 설정 파일은 건드리지 않았습니다."
-  /usr/bin/defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/.config"
-  /usr/bin/defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
-  iterm_ready || die "iTerm custom preferences 적용을 확인하지 못했습니다."
-}
 github_authenticated() { "$GH_BIN" auth status --active --hostname github.com >/dev/null 2>&1; }
 setup_git_identity() {
   local current_name current_email profile
@@ -482,7 +464,6 @@ main() {
   install_powerlevel10k
   install_fonts
   install_neovim_plugins
-  configure_iterm
   configure_macos
   setup_github
   setup_tailscale

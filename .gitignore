@@ -1,6 +1,5 @@
 *
 !.config
-!.config/com.googlecode.iterm2.plist
 !.config/ghostty
 !.config/ghostty/config.ghostty
 !.config/nvim
@@ -8,8 +7,6 @@
 !.config/nvim/init.vim
 !.gitignore
 !.p10k.zsh
-!.resources
-!.resources/GruvboxDark.itermcolors
 !.zshrc
 !Brewfile
 !README.md
