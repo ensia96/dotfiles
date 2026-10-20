@@ -1,6 +1,8 @@
 *
 !.config
 !.config/com.googlecode.iterm2.plist
+!.config/ghostty
+!.config/ghostty/config.ghostty
 !.config/nvim
 !.config/nvim/coc-settings.json
 !.config/nvim/init.vim

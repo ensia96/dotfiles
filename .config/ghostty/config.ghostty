@@ -1,0 +1,24 @@
+auto-update = download
+font-family = MesloLGS NF
+font-family = Apple SD Gothic Neo
+font-size = 12
+
+keybind = super+d=new_split:right
+keybind = chain=equalize_splits
+
+keybind = super+left=previous_tab
+keybind = super+right=next_tab
+
+keybind = super+shift+d=new_split:down
+keybind = chain=equalize_splits
+
+keybind = super+shift+left=move_tab:-1
+keybind = super+shift+right=move_tab:1
+
+macos-option-as-alt = left
+macos-titlebar-style = tabs
+quit-after-last-window-closed = true
+shell-integration-features = no-cursor
+term = xterm-256color
+theme = Gruvbox Dark
+window-title-font-family = MesloLGS NF
