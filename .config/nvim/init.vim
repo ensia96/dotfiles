@@ -21,11 +21,6 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " 파일 탐색기 구문 강조
 Plug 'Xuyuanp/nerdtree-git-plugin' " 파일 탐색기에 상태 표시
 
 " ------------------------------------
-" 버퍼 간 커서 이동
-" ------------------------------------
-Plug 'christoomey/vim-tmux-navigator'
-
-" ------------------------------------
 " 플로팅 탐색기
 " ------------------------------------
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -267,6 +262,10 @@ map <A-h> :wincmd H<cr>
 map <A-j> :wincmd J<cr>
 map <A-k> :wincmd K<cr>
 map <A-l> :wincmd L<cr>
+nnoremap <silent> <C-h> <C-w>h
+nnoremap <silent> <C-j> <C-w>j
+nnoremap <silent> <C-k> <C-w>k
+nnoremap <silent> <C-l> <C-w>l
 map <A-]> >>
 map <A-[> <<
 map <C-T> :term<cr>
