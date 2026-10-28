@@ -135,6 +135,7 @@ set updatetime=300
 set signcolumn=yes
 let g:coc_global_extensions = [
             \ 'coc-eslint',
+            \ 'coc-java',
             \ 'coc-json',
             \ 'coc-pairs',
             \ 'coc-pyright',
