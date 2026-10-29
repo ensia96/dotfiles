@@ -13,14 +13,6 @@ readonly NVIM_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/nvim"
 readonly PLUG_VIM="$NVIM_DATA_DIR/site/autoload/plug.vim"
 readonly COPILOT_PLUGIN="$NVIM_DATA_DIR/plugged/copilot.vim/plugin/copilot.vim"
 
-FONT_NAMES=(
-  "MesloLGS NF Regular.ttf"
-  "MesloLGS NF Bold.ttf"
-  "MesloLGS NF Italic.ttf"
-  "MesloLGS NF Bold Italic.ttf"
-)
-readonly -a FONT_NAMES
-
 TMP_DIR="$(mktemp -d "$HOME/.dotfiles-install.XXXXXX")"
 readonly TMP_DIR
 TTY_OPEN=0
@@ -207,26 +199,6 @@ install_powerlevel10k() {
     || die "Powerlevel10k 설치 결과가 유효하지 않습니다."
   move_staged_directory "$staged" "$destination"
   [[ -s "$destination/powerlevel10k.zsh-theme" ]] || die "Powerlevel10k 최종 marker가 없습니다."
-}
-install_fonts() {
-  local directory="$HOME/Library/Fonts"
-  local font destination downloaded
-  log "Powerlevel10k 공식 MesloLGS NF 폰트"
-  [[ ! -L "$directory" ]] || die "$directory가 symbolic link라서 중단합니다."
-  [[ ! -e "$directory" || -d "$directory" ]] || die "$directory가 디렉터리가 아닙니다."
-  mkdir -p "$directory"
-  for font in "${FONT_NAMES[@]}"; do
-    destination="$directory/$font"
-    if [[ -e "$destination" || -L "$destination" ]]; then
-      [[ -f "$destination" && -s "$destination" ]] \
-        || die "불완전한 기존 폰트 파일을 자동으로 덮어쓰지 않습니다: $destination"
-      continue
-    fi
-    downloaded="$TMP_DIR/$font"
-    download "https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/${font// /%20}" \
-      "$downloaded"
-    install_file_atomically "$downloaded" "$destination"
-  done
 }
 install_neovim_plugins() {
   local directory="${PLUG_VIM%/*}"
@@ -462,7 +434,6 @@ main() {
   setup_homebrew
   install_oh_my_zsh
   install_powerlevel10k
-  install_fonts
   install_neovim_plugins
   configure_macos
   setup_github

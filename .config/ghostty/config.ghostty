@@ -1,5 +1,5 @@
 auto-update = download
-font-family = MesloLGS NF
+font-family = MesloLGS Nerd Font
 font-family = Apple SD Gothic Neo
 font-size = 12
 keybind = super+left=previous_tab
@@ -12,4 +12,4 @@ quit-after-last-window-closed = true
 shell-integration-features = no-cursor
 term = xterm-256color
 theme = Gruvbox Dark
-window-title-font-family = MesloLGS NF
+window-title-font-family = MesloLGS Nerd Font
