@@ -1,6 +1,8 @@
 " ========================================================================
 "  플러그인 설치
 " ========================================================================
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
 call plug#begin()
 
 " ------------------------------------
@@ -16,9 +18,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " ------------------------------------
 " 파일 탐색기
 " ------------------------------------
-Plug 'preservim/nerdtree'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " 파일 탐색기 구문 강조
-Plug 'Xuyuanp/nerdtree-git-plugin' " 파일 탐색기에 상태 표시
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'nvim-tree/nvim-tree.lua'
 
 " ------------------------------------
 " 플로팅 탐색기
@@ -35,11 +36,6 @@ Plug 'voldikss/vim-floaterm'
 " 색상 테마
 " ------------------------------------
 Plug 'morhetz/gruvbox'
-
-" ------------------------------------
-" 아이콘
-" ------------------------------------
-Plug 'ryanoasis/vim-devicons'
 
 " ------------------------------------
 " 상태바
@@ -150,22 +146,58 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " ------------------------------------
 " 파일 탐색기
 " ------------------------------------
-" 자동 시작
-" 탭이 하나만 남아 있을 때 자동 닫기
-" 현재 열려있는 파일에 대한 강조
-" ------------------------------------
-autocmd VimEnter * NERDTree
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-function! IsNERDTreeOpen()
-    return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-function! SyncTree()
-    if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-        NERDTreeFind
-        wincmd p
-    endif
-endfunction
-autocmd BufEnter * call SyncTree()
+lua << EOF
+local api = require("nvim-tree.api")
+
+local function on_attach(bufnr)
+    local zoom_width
+
+    api.map.on_attach.default(bufnr)
+    vim.keymap.set("n", "A", function()
+        local win = vim.api.nvim_get_current_win()
+        if zoom_width then
+            vim.cmd("vertical resize " .. zoom_width)
+            zoom_width = nil
+            return
+        end
+
+        local width = vim.api.nvim_win_get_width(win)
+        zoom_width = width
+        vim.cmd("vertical resize " .. vim.o.columns)
+        if vim.api.nvim_win_get_width(win) == width then
+            zoom_width = nil
+        end
+    end, {
+        buffer = bufnr,
+        desc = "nvim-tree: Toggle Zoom",
+        noremap = true,
+        silent = true,
+        nowait = true,
+    })
+    vim.keymap.set("n", ".", api.tree.toggle, {
+        buffer = bufnr,
+        desc = "nvim-tree: Toggle",
+        noremap = true,
+        silent = true,
+        nowait = true,
+    })
+    vim.keymap.set("n", "?", api.tree.toggle_help, {
+        buffer = bufnr,
+        desc = "nvim-tree: Help",
+        noremap = true,
+        silent = true,
+        nowait = true,
+    })
+end
+
+require("nvim-tree").setup({
+    on_attach = on_attach,
+    update_focused_file = {
+        enable = true,
+        update_root = { enable = true },
+    },
+})
+EOF
 
 " ------------------------------------
 " 색상 테마
@@ -173,6 +205,13 @@ autocmd BufEnter * call SyncTree()
 " gruvbox 테마 설정
 " ------------------------------------
 colorscheme gruvbox
+highlight! link NvimTreeFolderName GruvboxAqua
+highlight! link NvimTreeEmptyFolderName GruvboxAqua
+highlight! link NvimTreeOpenedFolderName GruvboxAqua
+highlight! link NvimTreeSymlinkFolderName GruvboxAqua
+highlight! link NvimTreeFolderIcon GruvboxAqua
+highlight! link NvimTreeOpenedFolderIcon GruvboxAqua
+highlight! link NvimTreeClosedFolderIcon GruvboxAqua
 
 " ------------------------------------
 " 상태바
@@ -300,7 +339,7 @@ nnoremap <silent> K :call ShowDocumentation()<CR>
 " ------------------------------------
 " . => 파일 탐색기 토글
 " ------------------------------------
-map <silent> . :NERDTreeToggle<CR>
+nnoremap <silent> . :NvimTreeToggle<CR>
 
 " ------------------------------------
 " 플로팅 터미널
