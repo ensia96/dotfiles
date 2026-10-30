@@ -1,3 +1,6 @@
+if exists('$SSH_CONNECTION')
+    let g:clipboard = 'osc52'
+endif
 " ========================================================================
 "  플러그인 설치
 " ========================================================================
@@ -105,7 +108,7 @@ set enc=utf-8
 set fenc=utf-8
 set hlsearch
 set ignorecase
-set clipboard=unnamed
+set clipboard=unnamedplus
 set title
 set wrap
 set linebreak
