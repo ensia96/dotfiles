@@ -73,48 +73,35 @@ call plug#end()
 " ------------------------------------
 " 줄 번호 표시
 " 들여쓰기 전처리 구문 판단
-" 자동 들여쓰기
 " C 스타일 들여쓰기
-" 탭, 백스페이스 동작 보조
 " 탭을 스페이스로 대체
 " 탭 너비를 4 로 설정
 " 들여쓰기 너비를 4 로 설정
-" 기본 인코딩을 UTF-8 로 설정
 " 파일 인코딩을 UTF-8 로 설정
-" 검색 시, 결과 강조 설정
 " 검색 시, 대소문자 무시
 " 운영체제 기본 클립보드 연동
 " ? 제목 표시줄에 현재 버퍼의 파일명 표시
-" 긴 줄을 자동 줄바꿈
 " 단어 단위로 줄바꿈 처리
 " 매칭되는 괄호 표시
 " 커서가 위치한 줄 강조
-" 호환성 모드 비활성화 (화살표 키 버그 해결)
 " ------------------------------------
 set number
 set smartindent
-set autoindent
 set cindent
-set smarttab
 set expandtab
 set tabstop=4
 set shiftwidth=4
-set enc=utf-8
 set fenc=utf-8
-set hlsearch
 set ignorecase
 set clipboard=unnamedplus
 set title
-set wrap
 set linebreak
 set showmatch
 set cursorline
-set nocompatible
 
 " ------------------------------------
 " 자동완성
 " ------------------------------------
-" 스왑 파일 생성 금지
 " 백업 파일 생성 금지
 " 업데이트 시간을 300ms 로 설정
 " 줄 번호 옆에 상태 표시줄 표시
@@ -123,7 +110,6 @@ set nocompatible
 " 자동완성 플러그인 강조 설정
 " 코파일럿과의 충돌을 방지하기 위한 커스텀 설정 : https://www.reddit.com/r/vim/comments/11fsc56/trying_to_add_github_copilot/
 " ------------------------------------
-set nobackup
 set nowritebackup
 set updatetime=300
 set signcolumn=yes
@@ -138,8 +124,6 @@ let g:coc_global_extensions = [
             \ 'coc-tsserver',
             \ ]
 imap <silent><script><expr> <CR> coc#pum#visible() ? coc#pum#cancel() : copilot#Accept("\<CR>")
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " ------------------------------------
 " 파일 탐색기
@@ -246,8 +230,12 @@ function! AccentDemo()
     call airline#parts#define_accent('고', 'red')
     let g:airline_section_a = airline#section#create(keys)
 endfunction
-autocmd VimEnter * call AccentDemo()
-let g:airline#extensions#branch#enabled = 1
+augroup dotfiles_user
+    autocmd!
+    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+    autocmd VimEnter * call AccentDemo()
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup END
 
 " ------------------------------------
 " 코파일럿
@@ -387,11 +375,3 @@ inoremap <silent><expr> <TAB>
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-" Highlight the symbol and its references when holding the cursor
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Add (Neo)Vim's native statusline support
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
