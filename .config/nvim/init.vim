@@ -14,11 +14,6 @@ call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " ------------------------------------
-" 구문 강조
-" ------------------------------------
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-" ------------------------------------
 " 파일 탐색기
 " ------------------------------------
 Plug 'nvim-tree/nvim-web-devicons'
