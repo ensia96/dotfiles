@@ -123,7 +123,8 @@ let g:coc_global_extensions = [
             \ 'coc-snippets',
             \ 'coc-tsserver',
             \ ]
-imap <silent><script><expr> <CR> coc#pum#visible() ? coc#pum#cancel() : copilot#Accept("\<CR>")
+imap <silent><script><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : copilot#Accept("\<CR>")
+inoremap <silent><expr> <Esc> coc#pum#visible() ? coc#pum#cancel() : "\<Esc>"
 
 " ------------------------------------
 " 파일 탐색기
@@ -371,7 +372,7 @@ function! CheckBackspace() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ coc#pum#visible() ? coc#pum#next(0) :
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(0) : "\<C-h>"
