@@ -1,6 +1,20 @@
 {
   "coc.preferences.formatOnSave": true,
   "inlayHint.position": "eol",
-  "snippets.ultisnips.enable": false,
-  "python.formatting.autopep8Args": ["--ignore=E731"]
+  "languageserver": {
+    "kotlin": {
+      "args": ["--stdio"],
+      "command": "kotlin-lsp",
+      "filetypes": ["kotlin"],
+      "rootPatterns": [
+        "build.gradle",
+        "build.gradle.kts",
+        "pom.xml",
+        "settings.gradle",
+        "settings.gradle.kts"
+      ]
+    }
+  },
+  "python.formatting.autopep8Args": ["--ignore=E731"],
+  "snippets.ultisnips.enable": false
 }
